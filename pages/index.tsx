@@ -1,7 +1,12 @@
-import type { NextPage } from "next";
+import { Layout } from "../components/Layout";
+import { NextPageWithLayout } from "./_app";
 
-const Home: NextPage = () => {
-  return <button className="btn btn-accent">Hello</button>;
+const Home: NextPageWithLayout = () => {
+  return <div></div>;
+};
+
+Home.getLayout = function getLayout(page) {
+  return <Layout>{page}</Layout>;
 };
 
 export default Home;
