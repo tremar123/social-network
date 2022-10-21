@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.dropdown-item-base {
+  @apply radix-highlighted:text-primary-content radix-highlighted:bg-primary-focus text-base-content outline-none;
+}
+
+.dropdown-item {
+  @apply dropdown-item-base min-w-[8rem];
+}
+
+.dropdown-sub-item {
+  @apply dropdown-item-base min-w-[4rem];
+}
