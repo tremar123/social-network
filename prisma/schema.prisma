@@ -60,25 +60,28 @@ model VerificationToken {
 }
 
 model Post {
-  id      String   @id @default(cuid())
-  userId  String
-  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  content String
-  images  String[]
-  likes   Like[]
+  id       String    @id @default(cuid())
+  userId   String
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  content  String
+  images   String[]
+  likes    Like[]
+  comments Comment[]
 }
 
 model Comment {
   id     String @id @default(cuid())
   userId String
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  postId String
+  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
   likes  Like[]
 }
 
 model Like {
-  id        String  @id @default(cuid())
+  id        String   @id @default(cuid())
   userId    String
-  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   postId    String?
   post      Post?    @relation(fields: [postId], references: [id], onDelete: Cascade)
   commentId String?
