@@ -21,7 +21,7 @@ export const Layout = (props: { children: JSX.Element }) => {
           <User data={data} status={status} />
         </div>
       </div>
-      <main>{props.children}</main>
+      <main className="pt-5">{props.children}</main>
     </>
   );
 };

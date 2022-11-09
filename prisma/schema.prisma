@@ -60,13 +60,14 @@ model VerificationToken {
 }
 
 model Post {
-  id       String    @id @default(cuid())
-  userId   String
-  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  content  String
-  images   String[]
-  likes    Like[]
-  comments Comment[]
+  id         String    @id @default(cuid())
+  userId     String
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  content    String
+  images     String[]
+  likes      Like[]
+  comments   Comment[]
+  created_at DateTime  @default(now())
 }
 
 model Comment {
@@ -76,6 +77,7 @@ model Comment {
   postId String
   post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
   likes  Like[]
+  created_at DateTime  @default(now())
 }
 
 model Like {
@@ -86,6 +88,7 @@ model Like {
   post      Post?    @relation(fields: [postId], references: [id], onDelete: Cascade)
   commentId String?
   comment   Comment? @relation(fields: [commentId], references: [id], onDelete: Cascade)
+  created_at DateTime  @default(now())
 
   @@unique([userId, postId, commentId])
 }
